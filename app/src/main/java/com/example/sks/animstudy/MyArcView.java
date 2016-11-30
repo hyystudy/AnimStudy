@@ -41,6 +41,7 @@ public class MyArcView extends View {
 
         mOutSidePaint = new Paint();
         mOutSidePaint.setStyle(Paint.Style.STROKE);
+        mOutSidePaint.setStrokeCap(Paint.Cap.ROUND);
         mOutSidePaint.setAntiAlias(true);
         mOutSidePaint.setStrokeWidth(density * 3);
         mOutSidePaint.setColor(Color.RED);

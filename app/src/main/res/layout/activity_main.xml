@@ -3,15 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/activity_horizontal_margin"
     tools:context="com.example.sks.animstudy.MainActivity">
-   <!-- <com.example.sks.animstudy.MyCircleView
-        android:id="@+id/circle_view"
-        android:layout_width="80dp"
-        android:layout_height="80dp" />-->
 
     <com.example.sks.animstudy.MyArcView
         android:id="@+id/arc_view"
         android:layout_width="80dp"
         android:layout_height="80dp"/>
+
+    <com.example.sks.animstudy.MyPathView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent">
+
+    </com.example.sks.animstudy.MyPathView>
+
+
+    <com.example.sks.animstudy.CircleProgress
+        android:id="@+id/progress"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        app:progress="0.8"
+        android:background="@color/colorPrimary"
+        app:bg_circular_color="#66000000"
+        app:bg_circular_width="6dp"
+        app:percent_text_size="35sp"
+        app:percent_text_color="@android:color/holo_red_dark"
+        app:progress_width="6dp"
+        android:layout_centerInParent="true"
+        />
 </RelativeLayout>

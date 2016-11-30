@@ -9,6 +9,6 @@ public class CustomInterpolator implements TimeInterpolator {
 
     @Override
     public float getInterpolation(float v) {
-        return v * 2.5f;
+        return v * 2f;
     }
 }
