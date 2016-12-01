@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProgress = (CircleProgress) findViewById(R.id.progress);
         mProgress.setVisibility(View.GONE);
 
+        findViewById(R.id.add).setOnClickListener(this);
+        findViewById(R.id.remove).setOnClickListener(this);
+
     }
 
     public void startAnim(){
@@ -117,6 +120,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        startAnim();
+        switch (view.getId()){
+            case R.id.arc_view:
+                startAnim();
+                break;
+        }
     }
 }

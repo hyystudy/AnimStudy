@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
     android:padding="@dimen/activity_horizontal_margin"
     tools:context="com.example.sks.animstudy.MainActivity">
 
@@ -13,10 +14,24 @@
         android:layout_height="80dp"/>
 
     <com.example.sks.animstudy.MyPathView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="102dp"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/transparent">
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/remove"
+            style="@style/TextStyle"
+            android:text="移除"
+            android:background="?android:selectableItemBackground"/>
+        <TextView
+            android:id="@+id/add"
+            style="@style/TextStyle"
+            android:text="批量添加"
+            android:background="?android:selectableItemBackground"/>
+       <!-- <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="@android:color/transparent"/>-->
 
     </com.example.sks.animstudy.MyPathView>
 
@@ -34,4 +49,14 @@
         app:progress_width="6dp"
         android:layout_centerInParent="true"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android"
+        android:textSize="16sp"
+        android:background="@drawable/rectangle_bg"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>
