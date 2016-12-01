@@ -17,7 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="102dp"
         android:layout_centerHorizontal="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:top_triangle="false"
+        app:triangle_height="6dp">
         <TextView
             android:id="@+id/remove"
             style="@style/TextStyle"
@@ -51,6 +53,7 @@
         />
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Android"

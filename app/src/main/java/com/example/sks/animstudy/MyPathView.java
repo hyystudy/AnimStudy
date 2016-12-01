@@ -1,6 +1,7 @@
 package com.example.sks.animstudy;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -8,7 +9,6 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 import android.widget.LinearLayout;
 
 /**
@@ -22,6 +22,8 @@ public class MyPathView extends LinearLayout {
     private RectF rectF;
     private float density;
     private final int DEFAULT_TRIANGLE_HEIGHT = 6;
+    private boolean mIsTopTriangle;
+    private float mTriangleHeight;
 
     public MyPathView(Context context) {
         this(context, null);
@@ -33,11 +35,17 @@ public class MyPathView extends LinearLayout {
 
     public MyPathView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView();
+        initView(attrs);
     }
 
-    private void initView() {
+    private void initView(AttributeSet attrs) {
         density = getResources().getDisplayMetrics().density;
+
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.MyPathView);
+        mIsTopTriangle = typedArray.getBoolean(R.styleable.MyPathView_top_triangle, false);
+        mTriangleHeight = typedArray.getDimension(R.styleable.MyPathView_triangle_height, DEFAULT_TRIANGLE_HEIGHT * density);
+        typedArray.recycle();
+
 
         paint = new Paint();
         paint.setAntiAlias(true);
@@ -54,11 +62,20 @@ public class MyPathView extends LinearLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        Log.d(TAG, "onSizeChanged: ");
-        rectF.left = 0;
-        rectF.right = w;
-        rectF.top = getPaddingTop();
-        rectF.bottom = h - getPaddingBottom() - DEFAULT_TRIANGLE_HEIGHT * 3;
+        if (mIsTopTriangle){
+            Log.d(TAG, "onSizeChanged: ");
+            rectF.left = 0;
+            rectF.right = w;
+            rectF.top = mTriangleHeight;
+            rectF.bottom = h;
+        } else {
+            Log.d(TAG, "onSizeChanged: ");
+            rectF.left = 0;
+            rectF.right = w;
+            rectF.top = 0;
+            rectF.bottom = h - mTriangleHeight;
+        }
+
     }
 
     @Override
@@ -73,9 +90,16 @@ public class MyPathView extends LinearLayout {
     }
 
     private void caculatePath() {
-        mPath.moveTo(rectF.width()/ 3 - density * DEFAULT_TRIANGLE_HEIGHT, rectF.bottom);
-        mPath.lineTo(rectF.width()/ 3, rectF.bottom + density * DEFAULT_TRIANGLE_HEIGHT);
-        mPath.lineTo(rectF.width()/ 3 + density * DEFAULT_TRIANGLE_HEIGHT, rectF.bottom);
+        if (mIsTopTriangle){
+            mPath.moveTo(rectF.width()/ 3 - density * DEFAULT_TRIANGLE_HEIGHT, rectF.top);
+            mPath.lineTo(rectF.width()/ 3, rectF.top - density * DEFAULT_TRIANGLE_HEIGHT);
+            mPath.lineTo(rectF.width()/ 3 + density * DEFAULT_TRIANGLE_HEIGHT, rectF.top);
+        } else {
+            mPath.moveTo(rectF.width()/ 3 - density * DEFAULT_TRIANGLE_HEIGHT, rectF.bottom);
+            mPath.lineTo(rectF.width()/ 3, rectF.bottom + density * DEFAULT_TRIANGLE_HEIGHT);
+            mPath.lineTo(rectF.width()/ 3 + density * DEFAULT_TRIANGLE_HEIGHT, rectF.bottom);
+        }
+
         mPath.close();
     }
 

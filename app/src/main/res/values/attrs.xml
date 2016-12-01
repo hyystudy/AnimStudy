@@ -13,4 +13,9 @@
         <attr name="percent_text_size" format="dimension|reference"/>
         <attr name="percent_text_color" format="color|reference"/>
     </declare-styleable>
+
+    <declare-styleable name="MyPathView">
+        <attr name="top_triangle" format="boolean"/>
+        <attr name="triangle_height" format="dimension|reference"/>
+    </declare-styleable>
 </resources>
