@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.arc_view).setOnClickListener(this);
 
         mProgress = (CircleProgress) findViewById(R.id.progress);
-        mProgress.setVisibility(View.GONE);
+        //mProgress.setVisibility(View.GONE);
 
         findViewById(R.id.add).setOnClickListener(this);
         findViewById(R.id.remove).setOnClickListener(this);
